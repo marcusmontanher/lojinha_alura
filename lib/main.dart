@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:lojinha_alura/moveis.dart';
+import 'package:lojinha_alura/modelos/moveis.dart';
 import 'package:lojinha_alura/paginas/carrinho.dart';
-import 'package:lojinha_alura/paginas/detalhes.dart';
 import 'package:lojinha_alura/widgets/appbar_customizada.dart';
+import 'package:lojinha_alura/widgets/grid_produtos.dart';
 
 void main() {
   runApp(MyApp());
@@ -35,18 +35,8 @@ class Inicio extends StatelessWidget {
         titulo: "Lojinha Alura",
         isCarrinho: false,
       ),
-      body: Center(
-        child: FlatButton(
-          onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => Detalhes(),
-              ),
-            );
-          },
-          child: Text('Vamos para os detalhes'),
-        ),
+      body: GridProdutos(
+        moveis: Moveis().moveis,
       ),
     );
   }
