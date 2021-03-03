@@ -14,9 +14,7 @@ class AppBarCustomizada extends StatelessWidget with PreferredSizeWidget {
       iconTheme: IconThemeData(color: Colors.black),
       title: Text(
         titulo,
-        style: TextStyle(
-          color: Colors.black,
-        ),
+        style: Theme.of(context).textTheme.headline1,
       ),
       backgroundColor: Colors.transparent,
       elevation: 0.0,

@@ -9,7 +9,11 @@ class TituloElementoGridProdutos extends StatelessWidget {
   Widget build(BuildContext context) {
     return Positioned(
       bottom: 10,
-      child: Text(titulo),
+      child: Text(
+        titulo,
+        style: Theme.of(context).textTheme.headline2,
+        overflow: TextOverflow.fade,
+      ),
     );
   }
 }

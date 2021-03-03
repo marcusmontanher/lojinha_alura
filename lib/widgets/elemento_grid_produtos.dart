@@ -6,27 +6,31 @@ import 'package:lojinha_alura/widgets/degrade_elemento_grid_produtos.dart';
 import 'package:lojinha_alura/widgets/imagem_elemento_grid_produtos.dart';
 import 'package:lojinha_alura/widgets/titulo_elemento_grid_produtos.dart';
 
-class ElementoGridProduto extends StatelessWidget {
+class ElementoGridProduto extends StatefulWidget {
   final Movel movel;
+  final Function atualiza;
+  const ElementoGridProduto({this.movel, this.atualiza});
 
-  const ElementoGridProduto({this.movel});
+  @override
+  _ElementoGridProdutoState createState() => _ElementoGridProdutoState();
+}
 
+class _ElementoGridProdutoState extends State<ElementoGridProduto> {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: (){
-        Navigator.push(context, 
-          MaterialPageRoute(builder: (context) => Detalhes(movel: movel,))
-        );
+      onTap: () {
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => Detalhes(
+                      movel: widget.movel,
+                    ))).then((value) => widget.atualiza);
       },
       child: Container(
         decoration: BoxDecoration(
           boxShadow: [
-            BoxShadow(
-              spreadRadius: 2,
-              blurRadius: 8,
-              color: Colors.black26
-            ),
+            BoxShadow(spreadRadius: 2, blurRadius: 8, color: Colors.black26),
           ],
         ),
         margin: EdgeInsets.all(10),
@@ -36,11 +40,11 @@ class ElementoGridProduto extends StatelessWidget {
             alignment: Alignment.center,
             children: [
               ImagemElementoGridProdutos(
-                imagem: movel.foto,
+                imagem: widget.movel.foto,
               ),
               DegradeElementoGridProdutos(),
               TituloElementoGridProdutos(
-                titulo: movel.title,
+                titulo: widget.movel.title,
               ),
             ],
           ),
